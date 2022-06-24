@@ -1,0 +1,177 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red39\green78\blue204;\red255\green255\blue254;\red0\green0\blue0;
+\red21\green129\blue62;\red238\green57\blue24;\red204\green0\blue78;\red42\green55\blue62;\red107\green0\blue1;
+}
+{\*\expandedcolortbl;;\cssrgb\c20000\c40392\c83922;\cssrgb\c100000\c100000\c99608;\cssrgb\c0\c0\c0;
+\cssrgb\c5098\c56471\c30980;\cssrgb\c95686\c31765\c11765;\cssrgb\c84706\c10588\c37647;\cssrgb\c21569\c27843\c30980;\cssrgb\c50196\c0\c0;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25420\viewh13200\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Select\cf0 \strokec4  location, \cf2 \strokec2 date\cf0 \strokec4 , total_cases , new_cases, total_deaths, population\cb1 \
+\cf2 \cb3 \strokec2 from\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Coviddeaths`\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 order\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  \cf6 \strokec6 1\cf0 \strokec4 ,\cf6 \strokec6 2\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 -- Total Cases vs Total Deaths\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 Select\cf0 \strokec4  location, \cf2 \strokec2 date\cf0 \strokec4 , total_cases , new_cases, total_deaths, \cf8 \strokec8 (\cf0 \strokec4 total_deaths\cf8 \strokec8 /\cf0 \strokec4 total_cases\cf8 \strokec8 )*\cf6 \strokec6 100\cf0 \strokec4  \cf2 \strokec2 as\cf0 \strokec4  DeathPercentage\cb1 \
+\cf2 \cb3 \strokec2 from\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Coviddeaths`\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 where\cf0 \strokec4  \cf9 \strokec9 location\cf0 \strokec4  = \cf5 \strokec5 "Ghana"\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 order\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  \cf6 \strokec6 1\cf0 \strokec4 ,\cf6 \strokec6 2\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 -- Total Cases vs Population\cf0 \cb1 \strokec4 \
+\cf7 \cb3 \strokec7 --Showing what Percentage of population got covid\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 Select\cf0 \strokec4  location, \cf2 \strokec2 date\cf0 \strokec4 , population, total_cases, \cf8 \strokec8 (\cf0 \strokec4 total_cases\cf8 \strokec8 /\cf0 \strokec4 population\cf8 \strokec8 )*\cf6 \strokec6 100\cf0 \strokec4  \cf2 \strokec2 as\cf0 \strokec4  CovidPercentage\cb1 \
+\cf2 \cb3 \strokec2 from\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Coviddeaths`\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 where\cf0 \strokec4  \cf9 \strokec9 location\cf0 \strokec4  = \cf5 \strokec5 "Ghana"\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 order\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  \cf6 \strokec6 1\cf0 \strokec4 ,\cf6 \strokec6 2\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 -- Countries with highest Infection rate compared to Population\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 Select\cf0 \strokec4  location, population, \cf2 \strokec2 MAX\cf8 \strokec8 (\cf0 \strokec4 total_cases\cf8 \strokec8 )\cf0 \strokec4  \cf2 \strokec2 as\cf0 \strokec4  HighestInfectionCount, \cf2 \strokec2 MAX\cf8 \strokec8 ((\cf0 \strokec4 total_cases\cf8 \strokec8 /\cf0 \strokec4 population\cf8 \strokec8 )*\cf6 \strokec6 100\cf8 \strokec8 )\cf0 \strokec4  \cf2 \strokec2 as\cf0 \strokec4  CovidPercentage\cb1 \
+\cf2 \cb3 \strokec2 from\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Coviddeaths`\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 group\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  location, population\cb1 \
+\cf2 \cb3 \strokec2 order\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  CovidPercentage \cf2 \strokec2 desc\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 -- Countries with Highest Death Count\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 Select\cf0 \strokec4  location, \cf2 \strokec2 Max\cf8 \strokec8 (\cf0 \strokec4 total_deaths\cf8 \strokec8 )\cf0 \strokec4  \cf2 \strokec2 as\cf0 \strokec4  TotalDeathCount\cb1 \
+\cf2 \cb3 \strokec2 from\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Coviddeaths`\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 WHERE\cf0 \strokec4  continent \cf2 \strokec2 is\cf0 \strokec4  \cf2 \strokec2 not\cf0 \strokec4  \cf2 \strokec2 null\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 group\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  location\cb1 \
+\cf2 \cb3 \strokec2 order\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  TotalDeathCount \cf2 \strokec2 desc\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 -- BREAKING THINGS DOWN BY CONTINENT\cf0 \cb1 \strokec4 \
+\
+\cf7 \cb3 \strokec7 --Showing Continents with Highest Death Count\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 Select\cf0 \strokec4  continent, \cf2 \strokec2 Max\cf8 \strokec8 (\cf0 \strokec4 total_deaths\cf8 \strokec8 )\cf0 \strokec4  \cf2 \strokec2 as\cf0 \strokec4  TotalDeathCount\cb1 \
+\cf2 \cb3 \strokec2 from\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Coviddeaths`\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 WHERE\cf0 \strokec4  continent \cf2 \strokec2 is\cf0 \strokec4  \cf2 \strokec2 not\cf0 \strokec4  \cf2 \strokec2 null\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 group\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  continent\cb1 \
+\cf2 \cb3 \strokec2 order\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  TotalDeathCount \cf2 \strokec2 desc\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 -- GLOBAL NUMBERS\cf0 \cb1 \strokec4 \
+\cf7 \cb3 \strokec7 -- Total Cases vs Total Deaths Per Day\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 select\cf0 \strokec4  \cf2 \strokec2 date\cf0 \strokec4 , \cf2 \strokec2 SUM\cf8 \strokec8 (\cf0 \strokec4 new_cases\cf8 \strokec8 )\cf0 \strokec4  \cf2 \strokec2 as\cf0 \strokec4  total_cases, \cf2 \strokec2 sum\cf8 \strokec8 (\cf0 \strokec4 new_deaths\cf8 \strokec8 )\cf0 \strokec4  \cf2 \strokec2 as\cf0 \strokec4  total_deaths, \cf8 \strokec8 (\cf2 \strokec2 SUM\cf8 \strokec8 (\cf0 \strokec4 new_deaths\cf8 \strokec8 )/\cf2 \strokec2 sum\cf8 \strokec8 (\cf0 \strokec4 new_cases\cf8 \strokec8 ))*\cf0 \strokec4  \cf6 \strokec6 100\cf0 \strokec4  \cf2 \strokec2 as\cf0 \strokec4  DeathPercentage\cb1 \
+\cf2 \cb3 \strokec2 from\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Coviddeaths`\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 WHERE\cf0 \strokec4  continent \cf2 \strokec2 is\cf0 \strokec4  \cf2 \strokec2 not\cf0 \strokec4  \cf2 \strokec2 null\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 group\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  \cf2 \strokec2 date\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 order\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  \cf6 \strokec6 1\cf0 \strokec4 ,\cf6 \strokec6 2\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 --Total Cases vs ToatlDeaths\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 select\cf0 \strokec4  \cf2 \strokec2 SUM\cf8 \strokec8 (\cf0 \strokec4 new_cases\cf8 \strokec8 )\cf0 \strokec4  \cf2 \strokec2 as\cf0 \strokec4  total_cases, \cf2 \strokec2 sum\cf8 \strokec8 (\cf0 \strokec4 new_deaths\cf8 \strokec8 )\cf0 \strokec4  \cf2 \strokec2 as\cf0 \strokec4  total_deaths, \cf8 \strokec8 (\cf2 \strokec2 SUM\cf8 \strokec8 (\cf0 \strokec4 new_deaths\cf8 \strokec8 )/\cf2 \strokec2 sum\cf8 \strokec8 (\cf0 \strokec4 new_cases\cf8 \strokec8 ))*\cf0 \strokec4  \cf6 \strokec6 100\cf0 \strokec4  \cf2 \strokec2 as\cf0 \strokec4  DeathPercentage\cb1 \
+\cf2 \cb3 \strokec2 from\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Coviddeaths`\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 WHERE\cf0 \strokec4  continent \cf2 \strokec2 is\cf0 \strokec4  \cf2 \strokec2 not\cf0 \strokec4  \cf2 \strokec2 null\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 order\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  \cf6 \strokec6 1\cf0 \strokec4 ,\cf6 \strokec6 2\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 --Joining CovidDeath Table and CovidVaccinations Table\cf0 \cb1 \strokec4 \
+\cf7 \cb3 \strokec7 -- Toatl Population vs Vaccinations\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 select\cf0 \strokec4  dea.continent, dea.location, dea.\cf2 \strokec2 date\cf0 \strokec4 , dea.population, vac.new_vaccinations,\cb1 \
+\cf2 \cb3 \strokec2 SUM\cf8 \strokec8 (\cf0 \strokec4 vac.new_vaccinations\cf8 \strokec8 )\cf0 \strokec4  \cf2 \strokec2 OVER\cf0 \strokec4  \cf8 \strokec8 (\cf2 \strokec2 PARTITION\cf0 \strokec4  \cf2 \strokec2 BY\cf0 \strokec4  dea.location \cf2 \strokec2 order\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  dea.location, dea.\cf2 \strokec2 date\cf8 \strokec8 )\cf0 \strokec4  \cb1 \
+\cf2 \cb3 \strokec2 as\cf0 \strokec4  RollingPeopleVaccinated\cb1 \
+\cf2 \cb3 \strokec2 from\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Coviddeaths`\cf0 \strokec4  dea\cb1 \
+\cf2 \cb3 \strokec2 join\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Covidvaccinations`\cf0 \strokec4  vac\cb1 \
+\cf2 \cb3 \strokec2 on\cf0 \strokec4  dea.\cf9 \strokec9 location\cf0 \strokec4  = vac.location\cb1 \
+\cf2 \cb3 \strokec2 and\cf0 \strokec4  dea.\cf9 \strokec9 date\cf0 \strokec4  = vac.\cf2 \strokec2 date\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 where\cf0 \strokec4  dea.continent \cf2 \strokec2 is\cf0 \strokec4  \cf2 \strokec2 not\cf0 \strokec4  \cf2 \strokec2 null\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 order\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  \cf6 \strokec6 2\cf0 \strokec4 ,\cf6 \strokec6 3\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 --  USING CTE\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 WITH\cf0 \strokec4  PopvsVac \cb1 \
+\cf2 \cb3 \strokec2 AS\cf0 \strokec4  \cf8 \strokec8 (\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 select\cf0 \strokec4  dea.continent, dea.location, dea.\cf2 \strokec2 date\cf0 \strokec4 , dea.population, vac.new_vaccinations,\cb1 \
+\cf2 \cb3 \strokec2 SUM\cf8 \strokec8 (\cf0 \strokec4 vac.new_vaccinations\cf8 \strokec8 )\cf0 \strokec4  \cf2 \strokec2 OVER\cf0 \strokec4  \cf8 \strokec8 (\cf2 \strokec2 PARTITION\cf0 \strokec4  \cf2 \strokec2 BY\cf0 \strokec4  dea.location \cf2 \strokec2 order\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  dea.location, dea.\cf2 \strokec2 date\cf8 \strokec8 )\cf0 \strokec4  \cb1 \
+\cf2 \cb3 \strokec2 as\cf0 \strokec4  RollingPeopleVaccinated\cb1 \
+\cf2 \cb3 \strokec2 from\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Coviddeaths`\cf0 \strokec4  dea\cb1 \
+\cf2 \cb3 \strokec2 join\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Covidvaccinations`\cf0 \strokec4  vac\cb1 \
+\cf2 \cb3 \strokec2 on\cf0 \strokec4  dea.\cf9 \strokec9 location\cf0 \strokec4  = vac.location\cb1 \
+\cf2 \cb3 \strokec2 and\cf0 \strokec4  dea.\cf9 \strokec9 date\cf0 \strokec4  = vac.\cf2 \strokec2 date\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 where\cf0 \strokec4  dea.continent \cf2 \strokec2 is\cf0 \strokec4  \cf2 \strokec2 not\cf0 \strokec4  \cf2 \strokec2 null\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 --order by 2,3\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb3 \strokec8 )\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 Select\cf0 \strokec4  \cf8 \strokec8 *\cf0 \strokec4 , \cf8 \strokec8 (\cf0 \strokec4 RollingPeopleVaccinated\cf8 \strokec8 /\cf0 \strokec4 population\cf8 \strokec8 )*\cf0 \strokec4  \cf6 \strokec6 100\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 From\cf0 \strokec4  PopvsVac\cb1 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 --TEMP TABLE\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 Create\cf0 \strokec4   \cf2 \strokec2 Table\cf0 \strokec4  study\cf8 \strokec8 -\cf2 \strokec2 project\cf8 \strokec8 -\cf6 \strokec6 350317\cf0 \strokec4 .study_dataset.PercentPopulationVaccinated\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb3 \strokec8 (\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3  Continent \cf2 \strokec2 String\cf0 \strokec4 ,\cb1 \
+\cb3  Location \cf2 \strokec2 String\cf0 \strokec4 ,\cb1 \
+\cb3  \cf2 \strokec2 Date\cf0 \strokec4  \cf2 \strokec2 Datetime\cf0 \strokec4 ,\cb1 \
+\cb3  Population numeric,\cb1 \
+\cb3  New_Vaccinations numeric,\cb1 \
+\cb3  RollingPeopleVaccinated numeric\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb3 \strokec8 )\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 AS\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 Select\cf0 \strokec4  dea.continent, dea.location, dea.\cf2 \strokec2 date\cf0 \strokec4 , dea.population, vac.new_vaccinations,\cb1 \
+\cf2 \cb3 \strokec2 SUM\cf8 \strokec8 (\cf0 \strokec4 vac.new_vaccinations\cf8 \strokec8 )\cf0 \strokec4  \cf2 \strokec2 OVER\cf0 \strokec4  \cf8 \strokec8 (\cf2 \strokec2 PARTITION\cf0 \strokec4  \cf2 \strokec2 BY\cf0 \strokec4  dea.location \cf2 \strokec2 order\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  dea.location, dea.\cf2 \strokec2 date\cf8 \strokec8 )\cf0 \strokec4  \cb1 \
+\cf2 \cb3 \strokec2 as\cf0 \strokec4  RollingPeopleVaccinated\cb1 \
+\cf2 \cb3 \strokec2 from\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Coviddeaths`\cf0 \strokec4  dea\cb1 \
+\cf2 \cb3 \strokec2 join\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Covidvaccinations`\cf0 \strokec4  vac\cb1 \
+\cf2 \cb3 \strokec2 on\cf0 \strokec4  dea.\cf9 \strokec9 location\cf0 \strokec4  = vac.location\cb1 \
+\cf2 \cb3 \strokec2 and\cf0 \strokec4  dea.\cf9 \strokec9 date\cf0 \strokec4  = vac.\cf2 \strokec2 date\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 where\cf0 \strokec4  dea.continent \cf2 \strokec2 is\cf0 \strokec4  \cf2 \strokec2 not\cf0 \strokec4  \cf2 \strokec2 null\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 --order by 2,3\cf0 \cb1 \strokec4 \
+\
+\
+\cf7 \cb3 \strokec7 -- To query PercentPopulation Vaccinated Table created above\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 Select\cf0 \strokec4  \cf8 \strokec8 *\cf0 \strokec4 , \cf8 \strokec8 (\cf0 \strokec4 RollingPeopleVaccinated\cf8 \strokec8 /\cf0 \strokec4 population\cf8 \strokec8 )*\cf0 \strokec4  \cf6 \strokec6 100\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 From\cf0 \strokec4  study\cf8 \strokec8 -\cf2 \strokec2 project\cf8 \strokec8 -\cf6 \strokec6 350317\cf0 \strokec4 .study_dataset.PercentPopulationVaccinated\cb1 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 -- Creating View to store data for later Visualization\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 Create\cf0 \strokec4  \cf2 \strokec2 View\cf0 \strokec4  study\cf8 \strokec8 -\cf2 \strokec2 project\cf8 \strokec8 -\cf6 \strokec6 350317\cf0 \strokec4 .study_dataset.PopvsVac\cb1 \
+\cf2 \cb3 \strokec2 AS\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 Select\cf0 \strokec4  dea.continent, dea.location, dea.\cf2 \strokec2 date\cf0 \strokec4 , dea.population, vac.new_vaccinations,\cb1 \
+\cf2 \cb3 \strokec2 SUM\cf8 \strokec8 (\cf0 \strokec4 vac.new_vaccinations\cf8 \strokec8 )\cf0 \strokec4  \cf2 \strokec2 OVER\cf0 \strokec4  \cf8 \strokec8 (\cf2 \strokec2 PARTITION\cf0 \strokec4  \cf2 \strokec2 BY\cf0 \strokec4  dea.location \cf2 \strokec2 order\cf0 \strokec4  \cf2 \strokec2 by\cf0 \strokec4  dea.location, dea.\cf2 \strokec2 date\cf8 \strokec8 )\cf0 \strokec4  \cb1 \
+\cf2 \cb3 \strokec2 as\cf0 \strokec4  RollingPeopleVaccinated\cb1 \
+\cf2 \cb3 \strokec2 from\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Coviddeaths`\cf0 \strokec4  dea\cb1 \
+\cf2 \cb3 \strokec2 join\cf0 \strokec4  \cf5 \strokec5 `study-project-350317.study_dataset.Covidvaccinations`\cf0 \strokec4  vac\cb1 \
+\cf2 \cb3 \strokec2 on\cf0 \strokec4  dea.\cf9 \strokec9 location\cf0 \strokec4  = vac.location\cb1 \
+\cf2 \cb3 \strokec2 and\cf0 \strokec4  dea.\cf9 \strokec9 date\cf0 \strokec4  = vac.\cf2 \strokec2 date\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 where\cf0 \strokec4  dea.continent \cf2 \strokec2 is\cf0 \strokec4  \cf2 \strokec2 not\cf0 \strokec4  \cf2 \strokec2 null\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 --order by 2,3\cf0 \cb1 \strokec4 \
+}
